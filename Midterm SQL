@@ -1,0 +1,18 @@
+Answers
+1.	B) UPDATE
+2.	B) ORDER BY
+3.	SELECT Name, InsuranceID FROM Patient
+4.	SELECT * FROM Physician WHERE Position = 'Surgical Attending Physician'
+5.	SELECT COUNT(SSN) AS Total_Patients FROM Patient
+6.	SELECT p.Name AS Physician, d.Name AS Department FROM Physician p 
+  JOIN Affiliated_With a ON p.EmployeeID = a.Physician 
+  JOIN Department d ON a.Department = d.DepartmentID
+  WHERE a.PrimaryAffiliation = 1
+7.	SELECT p.Name Physician, COUNT(*) AS Patients FROM Appointment a JOIN Physician p ON a.Physician = p.EmployeeID GROUP BY Physician
+8.	SELECT AppointmentID AS Appointment, p.Name AS Patient, d.Name AS Doctor FROM Appointment a 
+  JOIN Patient p ON a.Patient = p.SSN
+  JOIN Physician d ON a.Physician = d.EmployeeID
+9.	SELECT p.Name AS Patient, count(p.Name) AS Appointment FROM Appointment a JOIN Patient p ON a.Patient = p.SSN GROUP BY p.Name HAVING COUNT(p.Name)
+10.	SELECT p.Name as Patient, m.Name as Medication FROM Prescribes pr 
+  JOIN Medication m ON m.Code = pr.Medication
+  JOIN Patient p ON p.SSN = pr.Patient
